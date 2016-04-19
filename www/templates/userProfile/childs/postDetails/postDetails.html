@@ -1,0 +1,43 @@
+<ion-view view-title="Request Details">
+    <ion-content>
+        <div class="list card">
+            <div class="item item-avatar">
+                <img ng-src="{{postDetail.profileImage}}">
+                <h2>{{postDetail.userName}}</h2>
+                <p class="timeStamp" am-time-ago="postDetail.postedOn"></p>
+            </div>
+
+            <div class="item item-body">
+                <p>
+                    <span class="detailsColor">{{postDetail.units}}</span> units of <span class="detailsColor">{{postDetail.bloodGroup}}</span>                    Group Blood required.
+                </p>
+                <p>
+                    Location: <span class="detailsColor">{{postDetail.hospital}} {{postDetail.city}} {{postDetail.state}}</span>.
+                </p>
+                <p>
+                    Urgency: <span class="detailsColor">{{postDetail.urgency}}</span>.
+                </p>
+                <p>
+                    Relation with patient: <span class="detailsColor">{{postDetail.relation}}</span>.
+                </p>
+                <p>
+                    Contact: <span class="detailsColor">{{postDetail.contact}}</span>.
+                </p>
+                <p>
+                    Additional Instructions <span class="detailsColor">{{postDetail.instructions}}</span>.
+                </p>
+                <p>
+                    <a href="#" class="subdued">1 Voluteers</a>
+                    <a href="#" class="subdued">5 Comments</a>
+                </p>
+            </div>
+
+            <div class="item item-divider button-bar buttonBar">
+
+                <button class="button icon-left button-outline button-balanced ion-person-add">Volunteer</button>
+                <button class="button icon-left button-outline button-positive ion-chatboxes">Comment</button>
+
+            </div>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,98 @@
+<ion-view view-title="Post Blood Request">
+    <ion-content scroll='false'>
+
+        <div class="list list-inset">
+
+            <form>
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        Blood Group
+                    </div>
+                    <select ng-model="request.bloodGroup">
+                        <option selected></option>
+                        <option ng-repeat="bloodGrp in static.bloodGroups">{{bloodGrp}}</option>
+                    </select>
+                </label>
+
+                <label class="item item-input">
+                    <span class="input-label">No. of Units Required</span>
+                    <input type="number" ng-model="request.units">
+                </label>
+
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        Urgency
+                    </div>
+                    <select ng-model="request.urgency">
+                        <option selected></option>
+                        <option ng-repeat="urgency in static.urgency">{{urgency}}</option>
+                    </select>
+                </label>
+
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        Country
+                    </div>
+                    <select ng-model="request.country">
+                        <option selected></option>
+                        <option ng-repeat="country in static.country">{{country}}</option>
+                    </select>
+                </label>
+
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        State
+                    </div>
+                    <select ng-model="request.state">
+                        <option selected></option>
+                        <option ng-repeat="state in static.state">{{state}}</option>
+                    </select>
+                </label>
+
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        City
+                    </div>
+                    <select ng-model="request.city">
+                        <option selected></option>
+                        <option ng-repeat="city in static.city">{{city}}</option>
+                    </select>
+                </label>
+
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        Hospital
+                    </div>
+                    <select ng-model="request.hospital">
+                        <option selected></option>
+                        <option ng-repeat="hospital in static.hospitals">{{hospital}}</option>
+                    </select>
+                </label>
+
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        Relation with patient
+                    </div>
+                    <select ng-model="request.relation">
+                        <option selected></option>
+                        <option ng-repeat="relation in static.relation">{{relation}}</option>
+                    </select>
+                </label>
+
+                <label class="item item-input">
+                    <span class="input-label">Contact No.</span>
+                    <input type="text" ng-model="request.contact">
+                </label>
+
+                <label class="item item-input">
+                    <span class="input-label">Additional Instrucions</span>
+                    <textarea rows="4" type="text" ng-model="request.instructions"></textarea>
+                </label>
+
+                <button type="submit" class="button button-block button-positive" ng-click="postRequest(request)">Post Request</button>
+            </form>
+
+        </div>
+
+    </ion-content>
+</ion-view>

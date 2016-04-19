@@ -1,0 +1,49 @@
+<ion-view view-title="Feed">
+    <ion-content>
+        <ul>
+
+            <span ng-repeat="items in allRequests">   
+                    <div class="list card" ng-repeat="(id, item) in items">
+  <div class="item item-avatar">
+    <img ng-src="{{item.profileImage}}">
+    <h2>{{item.userName}}</h2>
+    <p class="timeStamp" am-time-ago="{{item.postedOn}}"></p>
+  </div>
+
+  <div class="item item-body">
+    <p>
+      {{item.units}} units of {{item.bloodGroup}} Group Blood required.
+    </p>
+    <p>
+        Location: {{item.hospital}} {{item.city}}.
+    </p>
+    <p>
+        Urgency: {{item.urgency}}.
+    </p>
+    <p>
+        <a ui-sref='userProfile.postDetails({uid: item.uid, postUid: id})'>more details</a>
+    </p>
+    <p>
+      <a href="#" class="subdued">1 Voluteers</a>
+      <a href="#" class="subdued">5 Comments</a>
+    </p>
+  </div>
+  
+  
+   <div class="item item-divider button-bar buttonBar">
+  
+
+  <button class="button icon-left button-outline button-balanced ion-person-add">Volunteer</button>
+  <button class="button icon-left button-outline button-positive ion-chatboxes">Comment</button>
+
+  </div>
+
+</div>
+
+      
+
+            </span>
+
+        </ul>
+    </ion-content>
+</ion-view>

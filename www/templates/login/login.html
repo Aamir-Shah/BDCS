@@ -1,0 +1,23 @@
+<ion-view title="Login">
+
+    <ion-content scroll='false'>
+        <!--<img ng-src="../../img/BDCS.png" class='logo' alt="bdcs logo">-->
+        <img ng-src="./img/BDCS.png" class='logo' alt="bdcs logo">
+
+        <div class="list">
+            <form>
+                <label class="item item-input">
+                    <input type="email" placeholder="Email" ng-model="user.email">
+                </label>
+                <label class="item item-input">
+                    <input type="password" placeholder="Password" ng-model="user.password">
+                </label>
+                <button ng-click="login(user.email, user.password)" class="button button-full button-positive">
+                    <i class="ion-log-in" style="font-size: 20px;"> Login</i>
+                </button>
+            </form>
+        </div>
+        <p class="new-account">Don't have an Account ? <a ui-sref='signup'>Create One!</a></p>
+    </ion-content>
+
+</ion-view>

@@ -1,0 +1,40 @@
+/* Empty. Add your own CSS if you like */
+.logo{
+    width: 30%;
+    margin: 50px auto 35px auto;
+    display: block;
+}
+
+.new-account{
+    color: grey;
+    text-align: center;
+    font-size: 12px;
+    margin-top: 50%;
+}
+
+.cover-image{
+    background-image: url(../img/cover.jpg);
+    height: 122px;
+}
+
+.side-menu-items {
+    margin-top: 76px;
+}
+
+span.item{
+    background: none;
+    border: none;
+}
+
+p.timeStamp{
+    font-size: 11px !important;
+   }
+   
+ .buttonBar{
+       padding: 0 !important;
+       border: none !important;
+   }
+   
+   .detailsColor{
+       font-weight: bold !important;
+   }
