@@ -6,6 +6,8 @@
   },
   "dependencies": {
     "angularfire": "^1.2.0",
-    "ngCordova": "^0.1.26-alpha"
+    "ngCordova": "^0.1.26-alpha",
+    "angular-elastic": "^2.5.1",
+    "angular-messages": "^1.5.5"
   }
 }

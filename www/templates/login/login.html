@@ -1,22 +1,32 @@
 <ion-view title="Login">
 
-    <ion-content scroll='false'>
+    <ion-content class="mainContent">
         <!--<img ng-src="../../img/BDCS.png" class='logo' alt="bdcs logo">-->
         <img ng-src="./img/BDCS.png" class='logo' alt="bdcs logo">
 
         <div class="list">
-            <form>
+            <form name="loginForm" novalidate>
                 <label class="item item-input">
-                    <input type="email" placeholder="Email" ng-model="user.email">
+                    <input type="email" placeholder="Email" name="email" ng-model="user.email" required>
                 </label>
                 <label class="item item-input">
-                    <input type="password" placeholder="Password" ng-model="user.password">
+                    <input type="password" placeholder="Password" ng-minlength="6" name="password" ng-model="user.password" required>
                 </label>
-                <button ng-click="login(user.email, user.password)" class="button button-full button-positive">
+                <button type="submit" class="button button-full button-positive" ng-click="login(user.email, user.password)" ng-disabled="loginForm.$invalid">
                     <i class="ion-log-in" style="font-size: 20px;"> Login</i>
                 </button>
             </form>
+            <div ng-messages="loginForm.email.$error" ng-show="loginForm.email.$touched">
+                <p ng-message="required" class="error ion-alert"> Email is required.</p>
+                <p ng-message="email" class="error ion-alert"> You must type a valid email.</p>
+            </div>
+            <div ng-messages="loginForm.password.$error" ng-show="loginForm.password.$touched">
+                <p ng-message="required" class="error ion-alert"> Password is required.</p>
+                <p ng-message="minlength" class="error ion-alert"> Password must be long than 6 characters.</p>
+            </div>
+
         </div>
+
         <p class="new-account">Don't have an Account ? <a ui-sref='signup'>Create One!</a></p>
     </ion-content>
 

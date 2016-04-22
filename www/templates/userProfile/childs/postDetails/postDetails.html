@@ -28,7 +28,8 @@
                 </p>
                 <p>
                     <a href="#" class="subdued">1 Voluteers</a>
-                    <a href="#" class="subdued">5 Comments</a>
+                    <a class="subdued" ng-if="!allComments.length">No Comments Yet!</a>
+                    <a href="#" class="subdued" ng-if="allComments.length">{{allComments.length}} Comments</a>
                 </p>
             </div>
 
@@ -39,5 +40,40 @@
 
             </div>
 
+        </div>
+
+        <!--comments Area-->
+        <div ng-if="allComments.length">
+            <div class="item item-divider">
+                Comments
+            </div>
+            <div class="list card">
+                <div class="item item-avatar comment-card" ng-repeat="comment in allComments">
+                    <img ng-src="{{comment.profilePic}}">
+                    <h3 style="font-weight:bold;">Marty McFly</h3>
+                    <span class="item item-text-wrap comment-text">{{comment.commentText}}</span>
+                    <p style="font-size:12px;" am-time-ago="comment.time"></p>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+
+
+
     </ion-content>
+    <form style="position: fixed; bottom: 0px; width: 100%;">
+        <ion-footer-bar class="bar-stable item-input-inset message-footer" keyboard-attach>
+            <label class="item-input-wrapper margin">
+                      <textarea placeholder="Post a Comment on this post" ng-model="comment.commentText" value="" required minlength="1" maxlength="1500" msd-elastic></textarea>
+                  </label>
+            <div class="footer-btn-wrap">
+                <button class="button button-icon icon ion-android-send footer-btn" ng-click="doComment(comment)" type="submit">
+                    </button>
+            </div>
+        </ion-footer-bar>
+    </form>
 </ion-view>
