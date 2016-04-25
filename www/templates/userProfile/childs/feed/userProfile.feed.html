@@ -1,7 +1,6 @@
 <ion-view view-title="Feed">
     <ion-content>
         <ul>
-
             <span ng-repeat="items in allRequests">   
                     <div class="list card" ng-repeat="(id, item) in items">
   <div class="item item-avatar">
@@ -25,14 +24,12 @@
     </p>
     <p>
       <a href="#" class="subdued">1 Voluteers</a>
-      <a href="#" class="subdued">5 Comments</a>
-    </p>
+      <a href="#" class="subdued"><span ng-if="item.commentCount">{{item.commentCount}} Comments</span> <span  ng-if="!item.commentCount">No Comments yet!</span></a>
+   </p>
   </div>
-  
   
    <div class="item item-divider button-bar buttonBar">
   
-
   <button class="button icon-left button-outline button-balanced ion-person-add">Volunteer</button>
   <button class="button icon-left button-outline button-positive ion-chatboxes">Comment</button>
 

@@ -71,3 +71,15 @@ angular
         }
 
     })
+
+    .service('commentService', function ($firebaseRef, $firebaseArray, $q) {
+
+        this.loadComments = function (uuid, postUid) {
+            var deferred = $q.defer();
+            $firebaseArray($firebaseRef.allComments.child(uuid).child(postUid))
+                .$loaded(function (data) {
+                    deferred.resolve(data);
+                })
+            return deferred.promise;
+        }
+    })

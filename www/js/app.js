@@ -81,6 +81,7 @@ angular.module('starter', ['ionic', 'firebase', 'angularMoment', 'ngCordova', 'm
         $firebaseRefProvider.registerUrl({
             default: firebaseRef,
             users: firebaseRef + 'users',
-            requests: firebaseRef + 'requests'
+            requests: firebaseRef + 'requests',
+            allComments: firebaseRef + 'allComments'
         })
     })

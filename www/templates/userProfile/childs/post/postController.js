@@ -14,10 +14,9 @@ angular
         $scope.request = {
             profileImage: $scope.localStorageData.password.profileImageURL,
             postedOn: Firebase.ServerValue.TIMESTAMP,
-            uid: $scope.uid
+            uid: $scope.uid,
+            commentCount: 0
         }
-
-
 
         $scope.postRequest = function(val) {
             $firebaseArray($firebaseRef.requests.child($scope.uid)).$add(val);

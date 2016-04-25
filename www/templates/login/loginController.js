@@ -1,8 +1,11 @@
 angular
     .module('starter')
 
-    .controller('loginController', function ($scope, $firebaseRef, $state, $ionicLoading, $cordovaToast) {
+    .controller('loginController', function ($scope, $firebaseRef, $state, $ionicLoading, $cordovaToast, $ionicHistory) {
 
+        $scope.$on('$ionicView.enter', function (event, viewData) {
+            $ionicHistory.clearCache();
+        });
         // $scope.auth = $firebaseAuth($firebaseRef.default)
         // $scope.auth.$onAuth(function (authData) {
         //     $timeout(function () {
@@ -17,7 +20,7 @@ angular
         // });
 
         // $scope.authData = $scope.auth.$getAuth();
-        
+
         // if ($scope.authData) {
         //     console.log("Logged in as:", $scope.authData.uid);
         // } else {

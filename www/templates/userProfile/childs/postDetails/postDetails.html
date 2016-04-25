@@ -26,11 +26,6 @@
                 <p>
                     Additional Instructions <span class="detailsColor">{{postDetail.instructions}}</span>.
                 </p>
-                <p>
-                    <a href="#" class="subdued">1 Voluteers</a>
-                    <a class="subdued" ng-if="!allComments.length">No Comments Yet!</a>
-                    <a href="#" class="subdued" ng-if="allComments.length">{{allComments.length}} Comments</a>
-                </p>
             </div>
 
             <div class="item item-divider button-bar buttonBar">
@@ -43,14 +38,16 @@
         </div>
 
         <!--comments Area-->
-        <div ng-if="allComments.length">
+        <div ng-if="postComment.length">
             <div class="item item-divider">
                 Comments
+                <span style="float:right;color:grey;">{{postComment.length}}</span>
             </div>
+            <div style="clear: both;"></div>
             <div class="list card">
-                <div class="item item-avatar comment-card" ng-repeat="comment in allComments">
+                <div class="item item-avatar comment-card" ng-repeat="comment in postComment">
                     <img ng-src="{{comment.profilePic}}">
-                    <h3 style="font-weight:bold;">Marty McFly</h3>
+                    <h3 style="font-weight:bold;">{{comment.userName}}</h3>
                     <span class="item item-text-wrap comment-text">{{comment.commentText}}</span>
                     <p style="font-size:12px;" am-time-ago="comment.time"></p>
                 </div>
@@ -65,13 +62,13 @@
 
 
     </ion-content>
-    <form style="position: fixed; bottom: 0px; width: 100%;">
+    <form name="commentForm" style="position: fixed; bottom: 0px; width: 100%;" novalidate>
         <ion-footer-bar class="bar-stable item-input-inset message-footer" keyboard-attach>
             <label class="item-input-wrapper margin">
-                      <textarea placeholder="Post a Comment on this post" ng-model="comment.commentText" value="" required minlength="1" maxlength="1500" msd-elastic></textarea>
+                      <textarea placeholder="Post a Comment on this post" ng-model="comment.commentText" minlength="1" maxlength="1500" required msd-elastic></textarea>
                   </label>
             <div class="footer-btn-wrap">
-                <button class="button button-icon icon ion-android-send footer-btn" ng-click="doComment(comment)" type="submit">
+                <button class="button button-icon icon ion-android-send footer-btn" ng-disabled="commentForm.$invalid" ng-click="doComment(comment)" type="submit">
                     </button>
             </div>
         </ion-footer-bar>
