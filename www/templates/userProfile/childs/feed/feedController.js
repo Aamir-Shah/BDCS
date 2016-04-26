@@ -1,22 +1,21 @@
 angular
     .module('starter')
 
-    .controller('feedController', function ($scope, $firebaseRef, $firebaseArray, commentService) {
-
+    .controller('feedController', function ($scope, $state, $firebaseRef, $firebaseArray, commentService, doVolunteer) {
+        // Load all users POSTS from firebase
         $scope.allRequests = $firebaseArray($firebaseRef.requests);
 
-        // $scope.foo = function (uid, puid) {
-        //     commentService.loadComments(uid, puid)
-        //         .then(function (data) {
-        //             $scope.bar = data;
-        //             console.log("comments on feed", $scope.bar)
-        //         })
-        // }
-        // $scope.foo = function (uid, postUid) {
-        //     $scope.bar = commentService.loadComments(uid, postUid)
-        // }
-        // $scope.allRequests.$loaded(function () {
-        //     console.log('abc', arguments);
-        //     $scope.abc = $scope.allRequests;
-        // })
+        // The user will be redirected to Post Details section
+        $scope.goToComments = function (uuid, puid) {
+            $state.go('userProfile.postDetails', { uid: uuid, postUid: puid });
+        }
+
+        $scope.iVolunteer = function (uuid, puid) {
+            doVolunteer.volunteer(uuid, puid)
+        }
+
+
+
+
+
     })

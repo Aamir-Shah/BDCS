@@ -26,7 +26,6 @@ angular
 
     .service('userData', function ($firebaseRef, $firebaseObject, $q) {
 
-
         this.getUserData = function () {
             var deferred = $q.defer();
             $firebaseObject($firebaseRef.users.child(this.localStorage().uid)).$loaded(function (data) {
@@ -82,4 +81,36 @@ angular
                 })
             return deferred.promise;
         }
+    })
+
+    .service('doVolunteer', function ($firebaseObject, $firebaseArray, $firebaseRef, $q, userData) {
+
+        userData.getUserData()
+            .then(function (data) {
+                console.log(data)
+                this.userDataForVolunteer = {
+                    userName: data.firstName + ' ' + data.lastName,
+                    uid: data.$id
+                }
+            })
+
+        this.volunteer = function (uid, pid) {
+            var deferred = $q.defer();
+
+
+            // First load postData from Firebase to update Volunteer node
+            this.CurrentPost = $firebaseObject($firebaseRef.requests.child(uid).child(pid))
+                .$loaded(function (data) {
+                    this.inc = data.volunteers += 1;
+                    // Now update volunteers counter on current post in firebase
+                    $firebaseRef.requests.child(uid).child(pid).update({ volunteers: this.inc });
+
+                    // Save Volunteer Info to Volunteers node in firebase
+                    $firebaseArray($firebaseRef.volunteers.child(uid).child(pid)).$add(userDataForVolunteer)
+
+                    deferred.resolve(data)
+                })
+            return deferred.promise;
+        }
+
     })

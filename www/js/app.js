@@ -82,6 +82,7 @@ angular.module('starter', ['ionic', 'firebase', 'angularMoment', 'ngCordova', 'm
             default: firebaseRef,
             users: firebaseRef + 'users',
             requests: firebaseRef + 'requests',
-            allComments: firebaseRef + 'allComments'
+            allComments: firebaseRef + 'allComments',
+            volunteers: firebaseRef + 'volunteers'
         })
     })
