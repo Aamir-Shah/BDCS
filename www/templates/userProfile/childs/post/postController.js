@@ -1,7 +1,7 @@
 angular
     .module('starter')
 
-    .controller('postController', function ($scope, userData, staticData, $firebaseRef, $firebaseArray, $firebaseObject) {
+    .controller('postController', function ($scope, userData, staticData, $firebaseRef, $firebaseArray) {
 
         // Load static data for post FORM from staticData service
         $scope.static = staticData.returnStatic();

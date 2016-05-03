@@ -23,8 +23,10 @@
         <a ui-sref='userProfile.postDetails({uid: item.uid, postUid: id})'>see more details</a>
     </p>
     <p>
-      <a href="#" class="subdued">1 Voluteers</a>
-      <a href="#" class="subdued"><span ng-if="item.commentCount">{{item.commentCount}} Comment<span ng-if="item.commentCount > 1">s</span></span>
+      <a href="#" class="subdued"><span ng-if="item.volunteers">{{item.volunteers}} Volunteer<span ng-if="item.volunteers > 1">s</span></span>
+            <span ng-if="!item.volunteers">No Volunteers Yet!</span>
+            </a>
+            <a href="#" class="subdued"><span ng-if="item.commentCount">{{item.commentCount}} Comment<span ng-if="item.commentCount > 1">s</span></span>
             <span ng-if="!item.commentCount">No Comments yet!</span>
             </a>
             </p>

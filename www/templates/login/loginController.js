@@ -6,27 +6,6 @@ angular
         $scope.$on('$ionicView.enter', function (event, viewData) {
             $ionicHistory.clearCache();
         });
-        // $scope.auth = $firebaseAuth($firebaseRef.default)
-        // $scope.auth.$onAuth(function (authData) {
-        //     $timeout(function () {
-        //         $scope.user = authData;
-        //         console.log($scope.user, "auth function")
-        //         if ($scope.user){
-        //             $state.go("userProfile.feed")
-        //         }else{
-        //             console.log("user is logged out")
-        //         }
-        //     });
-        // });
-
-        // $scope.authData = $scope.auth.$getAuth();
-
-        // if ($scope.authData) {
-        //     console.log("Logged in as:", $scope.authData.uid);
-        // } else {
-        //     console.log("Logged out");
-        // }
-
 
         $scope.login = function (val1, val2) {
             $ionicLoading.show()

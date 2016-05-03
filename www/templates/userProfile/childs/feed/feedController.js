@@ -1,7 +1,7 @@
 angular
     .module('starter')
 
-    .controller('feedController', function ($scope, $state, $firebaseRef, $firebaseArray, commentService, doVolunteer) {
+    .controller('feedController', function ($scope, $state, $firebaseRef, $firebaseArray, commentService, volunteerService) {
         // Load all users POSTS from firebase
         $scope.allRequests = $firebaseArray($firebaseRef.requests);
 
@@ -11,11 +11,9 @@ angular
         }
 
         $scope.iVolunteer = function (uuid, puid) {
-            doVolunteer.volunteer(uuid, puid)
+            console.log('volunteered successfully')
+            volunteerService.volunteer(uuid, puid)
         }
-
-
-
 
 
     })

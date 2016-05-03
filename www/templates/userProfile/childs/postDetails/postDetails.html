@@ -37,6 +37,23 @@
 
         </div>
 
+        <!--Volunteers Area-->
+        <div ng-if="volunteers.length">
+            <div class="item item-divider">
+                Volunteers
+                <span style="float:right;color:grey;">{{volunteers.length}}</span>
+            </div>
+            <!--<div style="clear: both;"></div>-->
+            <div class="list card">
+                <div class="item item-avatar comment-card" ng-repeat="volunteer in volunteers">
+                    <img>
+                    <h3 style="font-weight:bold;">{{volunteer.userName}}</h3>
+                    <span class="item item-text-wrap comment-text">Not Donated</span>
+                    <p style="font-size:12px;" am-time-ago="volunteer.time"></p>
+                </div>
+            </div>
+        </div>
+
         <!--comments Area-->
         <div ng-if="postComment.length">
             <div class="item item-divider">
@@ -45,23 +62,14 @@
             </div>
             <div style="clear: both;"></div>
             <div class="list card">
-                <div class="item item-avatar comment-card" ng-repeat="comment in postComment">
+                <div class="item item-avatar comment-card" ng-repeat="comment in postComment track by $index ">
                     <img ng-src="{{comment.profilePic}}">
                     <h3 style="font-weight:bold;">{{comment.userName}}</h3>
                     <span class="item item-text-wrap comment-text">{{comment.commentText}}</span>
                     <p style="font-size:12px;" am-time-ago="comment.time"></p>
                 </div>
-
             </div>
         </div>
-        <br>    <br> <br> <br><br><br><br><br><br>
-        <span id="commentBar">hello</span>
-
-
-
-
-
-
 
     </ion-content>
     <form name="commentForm" style="position: fixed; bottom: 0px; width: 100%;" novalidate>
@@ -70,7 +78,8 @@
                       <textarea placeholder="Post a Comment on this post" ng-model="comment.commentText" minlength="1" maxlength="1500" required msd-elastic></textarea>
                   </label>
             <div class="footer-btn-wrap">
-                <button class="button button-icon icon ion-android-send footer-btn" ng-disabled="commentForm.$invalid" ng-click="doComment(comment)" type="submit">
+                <button class="button button-icon icon ion-android-send footer-btn" ng-disabled="commentForm.$invalid" ng-click="doComment(comment)"
+                    type="submit">
                     </button>
             </div>
         </ion-footer-bar>

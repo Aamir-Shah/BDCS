@@ -1,16 +1,16 @@
 angular
     .module('starter')
 
-    .controller('signupController', function($scope, $firebaseRef, $state, $ionicLoading) {
+    .controller('signupController', function ($scope, $firebaseRef, $state, $ionicLoading, $firebaseObject) {
         $scope.user = {};
 
-        $scope.createAccount = function() {
+        $scope.createAccount = function () {
             $ionicLoading.show()
             console.log('function is running perfectly')
             $firebaseRef.default.createUser({
                 email: $scope.user.email,
                 password: $scope.user.password
-            }, function(error, userData) {
+            }, function (error, userData) {
                 if (error) {
                     $ionicLoading.hide()
                     console.log("Error creating user:", error);
@@ -24,19 +24,18 @@ angular
         }
 
         function addAdditionalInfo(id) {
-            var ref = $firebaseRef.users.child(id);
-            ref.set({
-                firstName: $scope.user.firstName,
-                lastName: $scope.user.lastName,
-                bloodGroup: $scope.user.bloodGroup
-            }), function(error) {
-                if (error) {
-                    console.log(error);
-                    console.log("error in adding aditional data");
-                } else {
-                    console.log('successfully added additional data');
-                }
-            }
+            $firebaseRef.users.child(id)
+                .set({
+                    firstName: $scope.user.firstName,
+                    lastName: $scope.user.lastName,
+                    bloodGroup: $scope.user.bloodGroup
+                })
+                .then(function () {
+                    console.log('successfully added additional Info');
+
+                }, function (error) {
+                    console.log('error in saving additionla info', error)
+                })
         }
 
     })
